@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Automata Simulator</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="project-title">Interactive Automata Simulator</h1>
+
+        <form method="POST">
+            <label for="word">Enter a word:</label>
+            <input type="text" name="word" id="word" required value="{{ word }}">
+
+            {% if alphabet %}
+                <p><strong>Alphabets:</strong> {{ alphabet }}</p>
+
+                <label for="fa_type">Select Automaton:</label>
+                <select name="fa_type" id="fa_type">
+                    <option value="dfa" {% if fa_type == 'dfa' %}selected{% endif %}>DFA</option>
+                    <option value="ndfa" {% if fa_type == 'ndfa' %}selected{% endif %}>NDFA</option>
+                    <option value="mealy" {% if fa_type == 'mealy' %}selected{% endif %}>Mealy</option>
+                    <option value="moore" {% if fa_type == 'moore' %}selected{% endif %}>Moore</option>
+                </select>
+            {% endif %}
+
+            <button type="submit">Test</button>
+        </form>
+
+        {% if result is not none %}
+            <h2>Result</h2>
+            <p><strong>{{ word }}</strong> is
+                <span style="color: {{ 'green' if result == True else 'red' }}">
+                    {{ 'ACCEPTED' if result == True else result }}
+                </span>
+                by {{ fa_type.upper() }}
+            </p>
+        {% endif %}
+
+        {% if language_summary %}
+            <h2>Language Summary</h2>
+            <pre>{{ language_summary }}</pre>
+        {% endif %}
+    </div>
+</body>
+</html>

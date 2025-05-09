@@ -3,6 +3,7 @@
 ![Automata Simulator UI]
 
 (screenshots/1.png)
+<img src="screenshots/1.png" width="200">
 
 A web-based tool that simulates various types of finite automata — including **DFA**, **NDFA**, **Mealy**, and **Moore machines** — and tracks the formal language formed by user input.
 
